@@ -50,12 +50,13 @@ public class PauseMenu : MonoBehaviour
 
     public void controls()
     {
+       
         controlPanel.SetActive(!controlPanel.activeSelf);
-
+        
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             controlPanel.SetActive(!controlPanel.activeSelf);
-
+           
         }
     }
 
