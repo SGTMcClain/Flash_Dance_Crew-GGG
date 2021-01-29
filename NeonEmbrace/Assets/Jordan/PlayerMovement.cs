@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool canJump;
     public int jumpHeight = 20;
-    public float speed = .8f;
+    public float speed = 10;
+    float moveDir;
+    private SceneManager LoadThis;
     // Start is called before the first frame update
    void Start()
     {
@@ -20,14 +23,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.A))
-                {
-            myMove.transform.position = myMove.position + new Vector3(-speed,0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            myMove.transform.position = myMove.position + new Vector3(speed, 0);
-        }
+     
+       moveDir = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(speed * moveDir, rb.velocity.y);
         if (Input.GetKey("space"))
         {
             if (canJump)
@@ -49,5 +47,21 @@ public class PlayerMovement : MonoBehaviour
     public void JumpAgain()
     {
         canJump = true;
+    }
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Spikes")
+        {
+            Debug.Log("CollisionSpikes");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Spikes")
+        {
+            Debug.Log("TriggerSpikes");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
