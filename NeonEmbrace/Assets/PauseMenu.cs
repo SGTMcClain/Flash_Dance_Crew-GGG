@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
+    public GameObject controlPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,22 @@ public class PauseMenu : MonoBehaviour
     //buttons 
     public void LevelSelect(string levelName)
     {
+        Toggle();
         SceneManager.LoadScene(levelName);
     }
 
-    public void quitGame(string quitButton)
+    public void controls()
+    {
+       /* controlPanel.active();
+
+        if (Input.GetKeyDown(KeyCode.backspace))
+        {
+            controlPanel.SetActive(!controlPanel.activeSelf);
+
+        }*/
+    }
+
+    public void quitGame()
     {
         //end this game's life
         Debug.Log("gamequit...");
