@@ -16,38 +16,14 @@ public class ColorManager : MonoBehaviour
     List<ColorSpaceChecker> greenObjects = new List<ColorSpaceChecker>();
     List<ColorSpaceChecker> blueObjects = new List<ColorSpaceChecker>();
     List<ColorSpaceChecker> pinkObjects = new List<ColorSpaceChecker>();
-
+    
     Colors activeColor;
 
     private void Awake()
     {
-        ColorSpaceChecker colors;
         foreach(GameObject obj in colorObjects)
         {
-            colors = obj.GetComponent<ColorSpaceChecker>();
-            switch (colors.myColors)
-            {
-                case Colors.Red:
-                    {
-                        redObjects.Add(colors);
-                        break;
-                    }
-                case Colors.Green:
-                    {
-                        greenObjects.Add(colors);
-                        break;
-                    }
-                case Colors.Blue:
-                    {
-                        blueObjects.Add(colors);
-                        break;
-                    }
-                case Colors.Pink:
-                    {
-                        pinkObjects.Add(colors);
-                        break;
-                    }
-            }
+            Sort(obj.GetComponent<ColorSpaceChecker>());
         }
     }
 
@@ -60,70 +36,71 @@ public class ColorManager : MonoBehaviour
             {
                 case Colors.Red:
                     {
-                        // * Check if switch is blocked
+                        // Check if switch is blocked
                         if (redObjects.Count == 0)
                         {
                             return;
                         }
+
                         foreach (ColorSpaceChecker obj in redObjects)
                         {
-                            if(obj.playerInArea)
+                            if(obj.playerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // * If Clear make switch. If not clear break.
+                        // If Clear make switch. If not clear break.
                         activeColor = Colors.Red;
                         Debug.Log(activeColor);
+                        ColorSwapAllOff();
                         foreach (ColorSpaceChecker obj in redObjects)
                         {
-                            ColorSwapAllOff();
                             obj.ColorSwapOn();
                         }
                         break;
                     }
                 case Colors.Green:
                     {
-                        // * Check if switch is blocked
+                        // Check if switch is blocked
                         if (greenObjects.Count == 0)
                         {
                             return;
                         }
                         foreach (ColorSpaceChecker obj in greenObjects)
                         {
-                            if (obj.playerInArea)
+                            if (obj.playerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // * If Clear make switch. If not clear break.
+                        // If Clear make switch. If not clear break.
                         activeColor = Colors.Green;
                         Debug.Log(activeColor);
+                        ColorSwapAllOff();
                         foreach (ColorSpaceChecker obj in greenObjects)
                         {
-                            ColorSwapAllOff();
                             obj.ColorSwapOn();
                         }
                         break;
                     }
                 case Colors.Blue:
                     {
-                        // * Check if switch is blocked
+                        // Check if switch is blocked
                         if (blueObjects.Count == 0)
                         {
                             return;
                         }
                         foreach (ColorSpaceChecker obj in blueObjects)
                         {
-                            if (obj.playerInArea)
+                            if (obj.playerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // * If Clear make switch. If not clear break.
+                        // If Clear make switch. If not clear break.
                         activeColor = Colors.Blue;
                         ColorSwapAllOff();
                         foreach (ColorSpaceChecker obj in blueObjects)
@@ -135,20 +112,20 @@ public class ColorManager : MonoBehaviour
                     }
                 case Colors.Pink:
                     {
-                        // * Check if switch is blocked
+                        // Check if switch is blocked
                         if(pinkObjects.Count == 0)
                         {
                             return;
                         }
                         foreach (ColorSpaceChecker obj in pinkObjects)
                         {
-                            if (obj.playerInArea)
+                            if (obj.playerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // * If Clear make switch. If not clear break.
+                        // If Clear make switch. If not clear break.
                         activeColor = Colors.Pink;
                         ColorSwapAllOff();
                         foreach (ColorSpaceChecker obj in pinkObjects)
@@ -275,4 +252,31 @@ public class ColorManager : MonoBehaviour
                 }
         }
     }  
+
+    private void Sort(ColorSpaceChecker colors)
+    {
+        switch (colors.myColors)
+        {
+            case Colors.Red:
+                {
+                    redObjects.Add(colors);
+                    break;
+                }
+            case Colors.Green:
+                {
+                    greenObjects.Add(colors);
+                    break;
+                }
+            case Colors.Blue:
+                {
+                    blueObjects.Add(colors);
+                    break;
+                }
+            case Colors.Pink:
+                {
+                    pinkObjects.Add(colors);
+                    break;
+                }
+        }
+    }
 }
