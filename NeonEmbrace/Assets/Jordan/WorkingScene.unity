@@ -338,12 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ccf2df8449c18498f390b020633005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
   myMove: {fileID: 0}
   rb: {fileID: 0}
   canJump: 0
->>>>>>> Stashed changes
   jumpHeight: 20
   speed: 0.8
 --- !u!1 &824777961
