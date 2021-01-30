@@ -11,6 +11,8 @@ public class ColorManager : MonoBehaviour
 {
     public Colors activeColor;
 
+    GameObject player;
+    ColorSwapPlayer csp;
     [SerializeField]
     List<GameObject> colorObjects = new List<GameObject>();
 
@@ -32,6 +34,8 @@ public class ColorManager : MonoBehaviour
     // Sets the active color for the start of the level
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        csp = player.GetComponentInChildren<ColorSwapPlayer>();
         if(activeColor == Colors.Pink)
         {
             ColorChanger(activeColor - 1);
@@ -73,6 +77,10 @@ public class ColorManager : MonoBehaviour
                         activeColor = Colors.Red;
                         Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in redObjects)
                         {
                             obj.ColorSwapOn();
@@ -98,6 +106,10 @@ public class ColorManager : MonoBehaviour
                         activeColor = Colors.Green;
                         Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if(player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in greenObjects)
                         {
                             obj.ColorSwapOn();
@@ -121,12 +133,16 @@ public class ColorManager : MonoBehaviour
 
                         // If Clear make switch.
                         activeColor = Colors.Blue;
+                        Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in blueObjects)
                         {
                             obj.ColorSwapOn();
                         }
-                        Debug.Log(activeColor);
                         break;
                     }
                 case Colors.Pink:
@@ -146,12 +162,17 @@ public class ColorManager : MonoBehaviour
 
                         // If Clear make switch.
                         activeColor = Colors.Pink;
+                        Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
+                        csp.ColorSwap(activeColor);
                         foreach (ColorSpaceChecker obj in pinkObjects)
                         {
                             obj.ColorSwapOn();
                         }
-                        Debug.Log(activeColor);
                         break;
                     }
             }
