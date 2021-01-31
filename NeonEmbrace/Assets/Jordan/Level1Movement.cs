@@ -19,6 +19,9 @@ public class Level1Movement : MonoBehaviour
     public static event isJumping jumpHappen;
     public GameObject background;
     public SpriteRenderer BackSprite;
+    public GameObject redStuff;
+    public bool hasRed = false;
+    public Animator animate;
     // Start is called before the first frame update
    void Start()
     {
@@ -26,7 +29,7 @@ public class Level1Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         CC = GetComponent<CapsuleCollider2D>();
         BackSprite = background.GetComponent<SpriteRenderer>();
-        BackSprite.color = new Color(1f, 1f, 1f, .5f);
+        BackSprite.color = new Color(1f, 1f, 1f, 0f);
     }
 
     // Update is called once per frame
@@ -35,42 +38,70 @@ public class Level1Movement : MonoBehaviour
         CanJump();
        moveDir = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(speed * moveDir, rb.velocity.y);
+        if(moveDir == 0 && !hasRed && rb.velocity.y == 0)
+        {
+            animate.Play("GreyRun");
+        }
+        if (moveDir == 0 && hasRed && rb.velocity.y == 0)
+        {
+            animate.Play("IdleAniRed");
+        }
+        if(moveDir != 0 && canJump && !hasRed)
+        {
+            animate.Play("GreyRun");
+        }
+        if (moveDir != 0 && canJump && hasRed)
+        {
+            animate.Play("RunAniRed");
+        }
+
+
         if (CanJump() && Input.GetKeyDown("space"))
         {
-               rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            if (!hasRed && canJump)
+            {
+                animate.Play("GreyJump");
+}
+
+                     if (hasRed&& canJump)
+                {
+                animate.Play("JumpAniRed");
+                    }
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                 canJump = false;
           //if (jumpHappen() != null)
-            { jumpHappen(); }
+           // { jumpHappen(); }
         }
             if(Input.GetKeyUp("space"))
             {
             if (rb.velocity.y > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .5f);
+             
+                       
             }
+
             }
-    if(Input.GetKeyDown("left"))
+       //     if(rb.velocity.y < -.1 && !hasRed)
+        {
+         //   animate.Play("GreyFall");
+        }
+        if (rb.velocity.y < 0 && hasRed)
+        {
+            animate.Play("LandingAniRed");
+        }
+
+        if (hasRed)
         {
             BackSprite.color = new Color(1f, 0f, 0f, .3f);
-        }
-        if (Input.GetKeyDown("up"))
-        {
-            BackSprite.color = new Color(0f, 0f, 1f, .1f);
-        }
-        if (Input.GetKeyDown("down"))
-        {
-            BackSprite.color = new Color(1f, .01f, .6f, .1f);
-        }
-        if (Input.GetKeyDown("right"))
-        {
-            BackSprite.color = new Color(0f, 1f, 0f, .1f);
+
         }
 
     }
     void isJump()
     {
       // if(jumpHappen() != null)
-        { jumpHappen(); }
+      //  { jumpHappen(); }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -90,6 +121,12 @@ public class Level1Movement : MonoBehaviour
         if (col.gameObject.name == "End")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if(col.gameObject.name== "RedAdd")
+        {
+            redStuff.gameObject.SetActive(true);
+            Destroy(col.gameObject);
+            hasRed = true;
         }
     }
     public bool CanJump()
