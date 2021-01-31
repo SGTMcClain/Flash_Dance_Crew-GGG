@@ -16,6 +16,8 @@ public class ColorManager : MonoBehaviour
     [SerializeField]
     List<GameObject> colorObjects = new List<GameObject>();
 
+    List<ColorBGChanger> backgrounds = new List<ColorBGChanger>();
+
     List<ColorSpaceChecker> redObjects = new List<ColorSpaceChecker>();
     List<ColorSpaceChecker> greenObjects = new List<ColorSpaceChecker>();
     List<ColorSpaceChecker> blueObjects = new List<ColorSpaceChecker>();
@@ -28,7 +30,13 @@ public class ColorManager : MonoBehaviour
         {
             Sort(obj.GetComponent<ColorSpaceChecker>());
         }
-        
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Background"))
+        {
+            backgrounds.Add(obj.GetComponent<ColorBGChanger>());
+        }
+
+        Debug.Log(backgrounds.Count);
     }
 
     // Sets the active color for the start of the level
@@ -85,6 +93,7 @@ public class ColorManager : MonoBehaviour
                         {
                             obj.ColorSwapOn();
                         }
+                        BackgroundChange();
                         break;
                     }
                 case Colors.Green:
@@ -114,6 +123,7 @@ public class ColorManager : MonoBehaviour
                         {
                             obj.ColorSwapOn();
                         }
+                        BackgroundChange();
                         break;
                     }
                 case Colors.Blue:
@@ -143,6 +153,7 @@ public class ColorManager : MonoBehaviour
                         {
                             obj.ColorSwapOn();
                         }
+                        BackgroundChange();
                         break;
                     }
                 case Colors.Pink:
@@ -173,6 +184,7 @@ public class ColorManager : MonoBehaviour
                         {
                             obj.ColorSwapOn();
                         }
+                        BackgroundChange();
                         break;
                     }
             }
@@ -317,5 +329,15 @@ public class ColorManager : MonoBehaviour
                     break;
                 }
         }
+    }
+
+    void BackgroundChange()
+    {
+        /*
+         foreach (ColorBGChanger bg in backgrounds)
+        {
+            bg.ColorShift(Colors.Red);
+        }
+        */
     }
 }
