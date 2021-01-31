@@ -71,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
        
       RaycastHit2D hit =  Physics2D.Raycast(CC.bounds.center, Vector2.down, CC.bounds.extents.y + .01f,platformLayer);
         Color rayColor = Color.green;
-        Debug.DrawRay(CC.bounds.center, Vector2.down * (CC.bounds.extents.y + .01f), rayColor);
-        Debug.Log(hit.collider != null);
+      
         return hit.collider != null;
       
         //else
