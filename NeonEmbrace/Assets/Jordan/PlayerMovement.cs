@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     float moveDir;
     private SceneManager LoadThis;
     private CapsuleCollider2D CC;
+    public delegate void isJumping();
+    public static event isJumping jumpHappen;
     // Start is called before the first frame update
    void Start()
     {
@@ -34,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
         {
                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                 canJump = false;
-            
+          //  if (jumpHappen() != null)
+            { jumpHappen(); }
         }
             if(Input.GetKeyUp("space"))
             {
@@ -46,9 +49,10 @@ public class PlayerMovement : MonoBehaviour
     
         
     }
-    public bool isJump()
+    void isJump()
     {
-        return canJump;
+      // if(jumpHappen() != null)
+        { jumpHappen(); }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
