@@ -21,7 +21,10 @@ public class Level1Movement : MonoBehaviour
     public SpriteRenderer BackSprite;
     public GameObject redStuff;
     public bool hasRed = false;
+    public bool hasBlue = false;
     public Animator animate;
+    public GameObject blueStuff;
+    private int selector = 0;
     // Start is called before the first frame update
    void Start()
     {
@@ -54,7 +57,29 @@ public class Level1Movement : MonoBehaviour
         {
             animate.Play("RunAniRed");
         }
-
+        if (hasRed && hasBlue)
+        {
+            if(Input.GetKeyDown("left"))
+            {
+                selector = 0;
+            }
+            if (Input.GetKeyDown("right"))
+            {
+                selector = 1;
+            }
+        }
+        if(selector == 1)
+        {
+            blueStuff.gameObject.SetActive(true);
+            redStuff.gameObject.SetActive(false);
+            BackSprite.color = new Color(0f, 0f, 1f, .1f);
+        }
+        if (selector == 0)
+        {
+            blueStuff.gameObject.SetActive(false);
+            redStuff.gameObject.SetActive(true);
+            BackSprite.color = new Color(1f, 0f, 0f, .3f);
+        }
 
         if (CanJump() && Input.GetKeyDown("space"))
         {
@@ -127,6 +152,12 @@ public class Level1Movement : MonoBehaviour
             redStuff.gameObject.SetActive(true);
             Destroy(col.gameObject);
             hasRed = true;
+        }
+        if (col.gameObject.name == "BlueAdd")
+        {
+            redStuff.gameObject.SetActive(true);
+            Destroy(col.gameObject);
+            hasBlue = true;
         }
     }
     public bool CanJump()
