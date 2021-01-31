@@ -69,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("TriggerSpikes");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (col.gameObject.name == "End")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     public bool CanJump()
     {
