@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                 canJump = false;
-          //  if (jumpHappen() != null)
+          //if (jumpHappen() != null)
             { jumpHappen(); }
         }
             if(Input.GetKeyUp("space"))
