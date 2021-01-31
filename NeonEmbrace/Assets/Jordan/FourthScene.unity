@@ -2022,6 +2022,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1017394872}
     m_Modifications:
+    - target: {fileID: 4512856783020876563, guid: 046262d45507d114b973b8a5d5561943,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512856783352786845, guid: 046262d45507d114b973b8a5d5561943,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4512856783771562186, guid: 046262d45507d114b973b8a5d5561943,
         type: 3}
       propertyPath: m_RootOrder
@@ -2081,6 +2091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Billboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512856784804778571, guid: 046262d45507d114b973b8a5d5561943,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046262d45507d114b973b8a5d5561943, type: 3}
@@ -4211,6 +4226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1017394872}
     m_Modifications:
+    - target: {fileID: 6580140605727815558, guid: 9f210cb34966a99418d71abb22b91307,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6580140606511825348, guid: 9f210cb34966a99418d71abb22b91307,
         type: 3}
       propertyPath: m_Name
@@ -4400,6 +4420,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1017394872}
     m_Modifications:
+    - target: {fileID: 6580140605727815558, guid: 9f210cb34966a99418d71abb22b91307,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6580140606511825348, guid: 9f210cb34966a99418d71abb22b91307,
         type: 3}
       propertyPath: m_Name
