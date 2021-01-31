@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2554825914409464168}
   - component: {fileID: 2554825914409464171}
   m_Layer: 0
-  m_Name: Spikes (1)
+  m_Name: Spike
   m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 169edec06edfb6b459ed90313da740a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44ce22cf901b9cd4dacaf3fff3ccb6ea, type: 3}
   m_Color: {r: 0.29214135, g: 0.6132076, b: 0.5773026, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.42666668, y: 0.42}
+  m_Size: {x: 3.81, y: 8.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,7 +100,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.81, y: 8.75}
-    newSize: {x: 0.42666668, y: 0.42}
+    newSize: {x: 3.81, y: 8.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
