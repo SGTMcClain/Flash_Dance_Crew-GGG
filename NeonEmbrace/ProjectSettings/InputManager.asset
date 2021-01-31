@@ -294,11 +294,59 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Menu
-    descriptiveName: 
+    m_Name: Red
+    descriptiveName: Switch to color red
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: escape
+    positiveButton: left
+    altNegativeButton: 
+    altPositiveButton: joystick button 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Green
+    descriptiveName: Switch to color green
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: up
+    altNegativeButton: 
+    altPositiveButton: joystick button 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Blue
+    descriptiveName: Switch to color blue
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: right
+    altNegativeButton: 
+    altPositiveButton: joystick button 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Pink
+    descriptiveName: Switch to color pink
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
