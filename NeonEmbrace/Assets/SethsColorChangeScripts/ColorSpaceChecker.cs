@@ -58,6 +58,15 @@ public class ColorSpaceChecker : MonoBehaviour, IColorable
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("player left");
+            playerInArea = false;
+        }
+    }
+
     // Turns the color tile off
     public void ColorSwapOff()
     {
