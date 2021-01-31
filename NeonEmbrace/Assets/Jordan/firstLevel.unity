@@ -7694,12 +7694,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b75965c169d4c7c46882f90b5c14830d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f7188425476cdd419ed72028f877a45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.82, y: 17.27}
+  m_Size: {x: 14.46, y: 15.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9244,6 +9244,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4871559513695825469, guid: e7e7df10f4f2a144dbbb9424ceaae070,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f7188425476cdd419ed72028f877a45,
+        type: 3}
     - target: {fileID: 4871559513695825469, guid: e7e7df10f4f2a144dbbb9424ceaae070,
         type: 3}
       propertyPath: m_Enabled
