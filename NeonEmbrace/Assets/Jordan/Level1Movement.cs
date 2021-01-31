@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Level1Movement : MonoBehaviour
 {
     [SerializeField]
     private LayerMask platformLayer;
