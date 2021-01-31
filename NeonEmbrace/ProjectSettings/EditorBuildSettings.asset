@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo2.unity
     guid: 48cd6369cfc8248469db21d39c2421c3
+  - enabled: 1
+    path: Assets/Jordan/firstLevel.unity
+    guid: 578097efb0cde7c46a823b3c7582ee58
   m_configObjects: {}
