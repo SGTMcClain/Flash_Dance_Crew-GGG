@@ -9,6 +9,10 @@ using UnityEngine;
  */
 public class ColorManager : MonoBehaviour
 {
+    public Colors activeColor;
+
+    GameObject player;
+    ColorSwapPlayer csp;
     [SerializeField]
     List<GameObject> colorObjects = new List<GameObject>();
 
@@ -17,7 +21,6 @@ public class ColorManager : MonoBehaviour
     List<ColorSpaceChecker> blueObjects = new List<ColorSpaceChecker>();
     List<ColorSpaceChecker> pinkObjects = new List<ColorSpaceChecker>();
     
-    Colors activeColor;
 
     private void Awake()
     {
@@ -25,7 +28,27 @@ public class ColorManager : MonoBehaviour
         {
             Sort(obj.GetComponent<ColorSpaceChecker>());
         }
+        
     }
+
+    // Sets the active color for the start of the level
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        csp = player.GetComponentInChildren<ColorSwapPlayer>();
+        if(activeColor == Colors.Pink)
+        {
+            ColorChanger(activeColor - 1);
+            ColorChanger(activeColor + 1);
+        }
+        else
+        {
+            ColorChanger(activeColor + 1);
+            ColorChanger(activeColor - 1);
+        }
+        
+    }
+
 
     // Main color change block
     public void ColorChanger(Colors newColors)
@@ -44,16 +67,20 @@ public class ColorManager : MonoBehaviour
 
                         foreach (ColorSpaceChecker obj in redObjects)
                         {
-                            if(obj.playerInArea && obj.check)
+                            if(obj.PlayerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // If Clear make switch. If not clear break.
+                        // If Clear make switch.
                         activeColor = Colors.Red;
                         Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in redObjects)
                         {
                             obj.ColorSwapOn();
@@ -69,16 +96,20 @@ public class ColorManager : MonoBehaviour
                         }
                         foreach (ColorSpaceChecker obj in greenObjects)
                         {
-                            if (obj.playerInArea && obj.check)
+                            if (obj.PlayerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // If Clear make switch. If not clear break.
+                        // If Clear make switch.
                         activeColor = Colors.Green;
                         Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if(player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in greenObjects)
                         {
                             obj.ColorSwapOn();
@@ -94,20 +125,24 @@ public class ColorManager : MonoBehaviour
                         }
                         foreach (ColorSpaceChecker obj in blueObjects)
                         {
-                            if (obj.playerInArea && obj.check)
+                            if (obj.PlayerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // If Clear make switch. If not clear break.
+                        // If Clear make switch.
                         activeColor = Colors.Blue;
+                        Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
                         foreach (ColorSpaceChecker obj in blueObjects)
                         {
                             obj.ColorSwapOn();
                         }
-                        Debug.Log(activeColor);
                         break;
                     }
                 case Colors.Pink:
@@ -119,26 +154,32 @@ public class ColorManager : MonoBehaviour
                         }
                         foreach (ColorSpaceChecker obj in pinkObjects)
                         {
-                            if (obj.playerInArea && obj.check)
+                            if (obj.PlayerInArea && obj.check)
                             {
                                 return;
                             }
                         }
 
-                        // If Clear make switch. If not clear break.
+                        // If Clear make switch.
                         activeColor = Colors.Pink;
+                        Debug.Log(activeColor);
                         ColorSwapAllOff();
+                        if (player != null)
+                        {
+                            csp.ColorSwap(activeColor);
+                        }
+                        csp.ColorSwap(activeColor);
                         foreach (ColorSpaceChecker obj in pinkObjects)
                         {
                             obj.ColorSwapOn();
                         }
-                        Debug.Log(activeColor);
                         break;
                     }
             }
         }
     }
 
+    // This turns off a single color
     private void ColorSwapOff(Colors colors)
     {
         switch (colors)
@@ -147,8 +188,7 @@ public class ColorManager : MonoBehaviour
                 {
                     foreach (ColorSpaceChecker obj in redObjects)
                     {
-                        obj.myCollider.isTrigger = true;
-                        obj.mySprite.enabled = false;
+                        obj.ColorSwapOff();
                     }
                     break;
                 }
@@ -156,8 +196,7 @@ public class ColorManager : MonoBehaviour
                 {
                     foreach (ColorSpaceChecker obj in greenObjects)
                     {
-                        obj.myCollider.isTrigger = true;
-                        obj.mySprite.enabled = false;
+                        obj.ColorSwapOff();
                     }
                     break;
                 }
@@ -165,8 +204,7 @@ public class ColorManager : MonoBehaviour
                 {
                     foreach (ColorSpaceChecker obj in blueObjects)
                     {
-                        obj.myCollider.isTrigger = true;
-                        obj.mySprite.enabled = false;
+                        obj.ColorSwapOff();
                     }
                     break;
                 }
@@ -174,14 +212,14 @@ public class ColorManager : MonoBehaviour
                 {
                     foreach (ColorSpaceChecker obj in pinkObjects)
                     {
-                        obj.myCollider.isTrigger = true;
-                        obj.mySprite.enabled = false;
+                        obj.ColorSwapOff();
                     }
                     break;
                 }
         }
     }
 
+    // Turns off all colors but one.
     private void ColorSwapAllOff()
     {
         switch (activeColor)
@@ -253,6 +291,7 @@ public class ColorManager : MonoBehaviour
         }
     }  
 
+    // Sorts an object into it's color set
     private void Sort(ColorSpaceChecker colors)
     {
         switch (colors.myColors)

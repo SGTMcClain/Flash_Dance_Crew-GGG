@@ -24,9 +24,18 @@ public class ColorSpaceChecker : MonoBehaviour, IColorable
     // Tracks if the player is in the way of spawning the object
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Debug.Log("player entered");
+            playerInArea = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("player contact");
             playerInArea = true;
         }
     }
@@ -34,8 +43,17 @@ public class ColorSpaceChecker : MonoBehaviour, IColorable
     // Tracks if the player is clear of the spawning object
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
+            playerInArea = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("player left");
             playerInArea = false;
         }
     }
