@@ -14,4 +14,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo2.unity
     guid: 48cd6369cfc8248469db21d39c2421c3
+  - enabled: 1
+    path: Assets/Jordan/firstLevel.unity
+    guid: 578097efb0cde7c46a823b3c7582ee58
+  - enabled: 1
+    path: Assets/Jordan/secondLevel.unity
+    guid: 9d45c889bc8ecea4cb84739aaa7cb95a
+  - enabled: 1
+    path: Assets/Jordan/ThirdScene.unity
+    guid: 4164491162d0c024a9c9c15e2a8149bd
+  - enabled: 1
+    path: Assets/Jordan/FourthScene.unity
+    guid: 27365cc16480e5d4abd865f2ddf52030
+  - enabled: 1
+    path: Assets/Jordan/FifthScene.unity
+    guid: 33f57432bdac0594195d773af62c6376
+  - enabled: 1
+    path: Assets/Jordan/sixthLevel.unity
+    guid: 2f431b8453f27f547afe63c810e56dde
+  - enabled: 1
+    path: Assets/Jordan/SeventhScene.unity
+    guid: 61f1ee96b0e86e34fb5efe8d55795c41
+  - enabled: 1
+    path: Assets/Jordan/eighthScene.unity
+    guid: d902287ec9466fe4b8b5e699aac11e3d
   m_configObjects: {}

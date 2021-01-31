@@ -9,6 +9,12 @@ public class LevelSelector : MonoBehaviour
     //create array of levels
     public Button[] levelButtons;
 
+
+    public void Select(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +33,7 @@ public class LevelSelector : MonoBehaviour
 
 
     }
-    public void Select(string levelName)
-    {
-        SceneManager.LoadScene(levelName);
-    }
+
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +48,7 @@ public class LevelSelector : MonoBehaviour
             }
         }
     }
+
 
     // Start is called before the first frame update
     /*void Start()
