@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4871559513695825469}
   - component: {fileID: 4871559513695825470}
   - component: {fileID: 4871559513695825464}
-  - component: {fileID: -7506203366622412545}
+  - component: {fileID: 1703920371448680735}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,7 +123,7 @@ MonoBehaviour:
     m_Bits: 256
   jumpHeight: 40
   speed: 30
---- !u!70 &-7506203366622412545
+--- !u!70 &1703920371448680735
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
