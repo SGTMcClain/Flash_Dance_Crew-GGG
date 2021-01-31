@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390df7914451f3349908e1711aab2716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: 1
+  activeColor: 0
   colorObjects:
   - {fileID: 317967097}
   - {fileID: 301234958}
