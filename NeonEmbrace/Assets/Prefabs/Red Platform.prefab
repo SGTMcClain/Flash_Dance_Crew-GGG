@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8153400609071674877}
   - component: {fileID: 8153400609071674879}
   - component: {fileID: 8153400609071674878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Red Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
