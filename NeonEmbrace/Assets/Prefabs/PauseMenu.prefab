@@ -810,10 +810,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 54b78be6517658a4db522d4d819a63db, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -821,7 +821,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: write how to play the game here
+  m_Text: 'a+d move sideways
+
+
+    Space to jump
+
+
+    Directional pad to switch
+    colors'
 --- !u!1 &1481232709679950398
 GameObject:
   m_ObjectHideFlags: 0
