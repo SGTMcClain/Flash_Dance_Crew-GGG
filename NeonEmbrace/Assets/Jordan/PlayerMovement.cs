@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     
         
     }
-    public void JumpAgain()
+    public bool isJump()
     {
-       // canJump = true;
+        return canJump;
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -71,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
        
       RaycastHit2D hit =  Physics2D.Raycast(CC.bounds.center, Vector2.down, CC.bounds.extents.y + .01f,platformLayer);
         Color rayColor = Color.green;
-      
+        if(hit.collider != null)
+        { canJump = true; }
         return hit.collider != null;
       
         //else
