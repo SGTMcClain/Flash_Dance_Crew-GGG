@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMovementAnimation : MonoBehaviour
 {
+    PlayerMovement player;
     Animator animator;
     SpriteRenderer sprite;
     float hor;
     private void Awake()
     {
+        player = GetComponentInParent<PlayerMovement>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -31,5 +33,16 @@ public class PlayerMovementAnimation : MonoBehaviour
             sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
         animator.SetFloat("Movement", Mathf.Abs(hor));
+      //  animator.SetBool("IsGrounded", player.canJump);
+    }
+
+    public void Jumped()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        PlayerMovement.jumpHappen += Jumped;
     }
 }
