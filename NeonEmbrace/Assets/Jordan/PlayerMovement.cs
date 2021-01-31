@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask platformLayer;
     private Transform myMove;
     private Rigidbody2D rb;
     private bool canJump;
@@ -14,27 +12,27 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     float moveDir;
     private SceneManager LoadThis;
-    private CapsuleCollider2D CC;
     // Start is called before the first frame update
    void Start()
     {
         myMove = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        CC = GetComponent<CapsuleCollider2D>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        CanJump();
+     
        moveDir = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(speed * moveDir, rb.velocity.y);
-        if (CanJump() && Input.GetKeyDown("space"))
+        if (Input.GetKey("space"))
         {
-               rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            if (canJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                 canJump = false;
-            
+            }
         }
             if(Input.GetKeyUp("space"))
             {
@@ -43,12 +41,12 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .5f);
             }
             }
-    
+
         
     }
     public void JumpAgain()
     {
-       // canJump = true;
+        canJump = true;
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -65,17 +63,5 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("TriggerSpikes");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    }
-    public bool CanJump()
-    {
-       
-      RaycastHit2D hit =  Physics2D.Raycast(CC.bounds.center, Vector2.down, CC.bounds.extents.y + .01f,platformLayer);
-        Color rayColor = Color.green;
-        Debug.DrawRay(CC.bounds.center, Vector2.down * (CC.bounds.extents.y + .01f), rayColor);
-        Debug.Log(hit.collider != null);
-        return hit.collider != null;
-      
-        //else
-        //  canJump = false;
     }
 }

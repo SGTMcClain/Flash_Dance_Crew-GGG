@@ -10,7 +10,7 @@ using UnityEngine;
 public class ColorSpaceChecker : MonoBehaviour, IColorable
 {
     public bool check = true;
-    public bool playerInArea;
+    private bool playerInArea;
     public Colors myColors;
 
     public Collider2D myCollider;
@@ -83,6 +83,14 @@ public class ColorSpaceChecker : MonoBehaviour, IColorable
         else
         {
             mySprite.enabled = true;
+        }
+    }
+
+    public bool PlayerInArea
+    {
+        get
+        {
+            return playerInArea;
         }
     }
 }
